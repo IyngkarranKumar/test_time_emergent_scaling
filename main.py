@@ -1,83 +1,22 @@
 import os, sys, pdb
 
-def debug_handler(type, value, tb):
-    """
-    Enters into pdb session when hitting an error"""
-    if type.__name__ == 'BdbQuit':
-        sys.exit(0)
-    
-    # Only handle exceptions from your actual script, not interactive sessions
-    if tb:
-        filename = tb.tb_frame.f_code.co_filename
-        # Skip console, interactive, and debugger-related exceptions
-        skip_patterns = ['<console>', '<stdin>', 'code.py', 'pdb.py', 'ipdb', 'bdb.py']
-        if any(pattern in filename for pattern in skip_patterns):
-            print(f"[DEBUG] Skipping interactive/debugger exception: {type.__name__}")
-            return
-        
-    rank = int(os.environ.get('LOCAL_RANK', 0))
-    print(f"[DEBUG RANK {rank}] Exception occurred: {type.__name__}: {value}")
-    
-    # Always print traceback for all ranks
-    import traceback
-    traceback.print_exception(type, value, tb)
-    
-    # Clean up CUDA before debugging 
-    try:
-        utils.clean_up_gpus()
-    except:
-        pass
-    
-    if rank == 0:
-        print(f"[DEBUG RANK {rank}] Starting post-mortem debugging...")
-        print("Commands: 'u' (up), 'd' (down), 'l' (list), 'p <var>' (print), 'pp <var>' (pretty print)")
-        print("'w' (where), 'h' (help), 'c' (continue), 'q' (quit)")
-        
-        try:
-            # Try ipdb first, fall back to pdb
-            try:
-                import IPython
-                # Initialize IPython if not already done
-                if not hasattr(IPython, 'get_ipython') or IPython.get_ipython() is None:
-                    from IPython.terminal.interactiveshell import TerminalInteractiveShell
-                    TerminalInteractiveShell.instance()
-                
-                import ipdb
-                ipdb.post_mortem(tb)
-            except (ImportError, AttributeError) as e:
-                print(f"[DEBUG] IPython/ipdb not available ({e}), falling back to pdb")
-                pdb.post_mortem(tb)
-                
-        except KeyboardInterrupt:
-            print("\n[DEBUG] Interrupted by user")
-        except Exception as debug_e:
-            print(f"[DEBUG] Error in debugger: {debug_e}")
-        finally:
-            try:
-                response = input("\n[DEBUG] Debug session ended. (c)ontinue execution or (q)uit? [c/q]: ").lower()
-                if response.startswith('q'):
-                    print("[DEBUG] Quitting...")
-                    sys.exit(1)
-                else:
-                    print("[DEBUG] Continuing execution...")
-                    return
-            except (EOFError, OSError):
-                # Handle non-interactive environments (batch jobs, etc.)
-                print("\n[DEBUG] No input available (non-interactive environment), defaulting to quit")
-                sys.exit(1)
-    else:
-        print(f"[DEBUG RANK {rank}] Non-zero rank, skipping pdb")
-        return
+import logging, pdb, sys,glob, subprocess
+from datetime import datetime
+import gc, importlib, warnings, copy
+import pickle, time
+import torch, numpy as np, pandas as pd
+import utils, conf, tempfile
+if torch.cuda.is_available(): import pynvml
 
-sys.excepthook = debug_handler
+from datasets import load_dataset
+from torch.nn.functional import softmax 
+from torch.distributions import Categorical
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, GenerationConfig, AwqConfig, CompressedTensorsConfig
+from tqdm import tqdm
+from vllm import LLM, SamplingParams #load vllm at very last stage
 
-
-
-
-
-
-
-
+importlib.reload(utils)
+importlib.reload(conf); from conf import config
 
 def main():
     import os 
@@ -100,26 +39,6 @@ def main():
         raise ValueError(f"Unknown node type: {os.environ.get('node_type')}")
     load_dotenv(dot_env_path)
 
-
-
-
-    import logging, pdb, sys,glob, subprocess
-    from datetime import datetime
-    import gc, importlib, warnings, copy
-    import pickle, time
-    import torch, numpy as np, pandas as pd
-    import utils, conf, tempfile
-    if torch.cuda.is_available(): import pynvml
-
-    from datasets import load_dataset
-    from torch.nn.functional import softmax 
-    from torch.distributions import Categorical
-    from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, GenerationConfig, AwqConfig, CompressedTensorsConfig
-    from tqdm import tqdm
-    from vllm import LLM, SamplingParams #load vllm at very last stage
-
-    importlib.reload(utils)
-    importlib.reload(conf); from conf import config
     
 
     # Clear any existing handlers
