@@ -35,7 +35,7 @@ Code to investigate emergent scaling behaviour at test-time with language reason
 - `utils`: Contains utility functions for workflow, scoring, and analysis. 
 
 ### Analysis Framework
-- `utils/analysis_utils.py`: Comprehensive analysis toolkit
+- `utils/analysis_utils.py`: Analysis toolkit
   - `AnalysisWorkflow` class: High-level analysis interface
   - `plot_data()`: Visualization of scaling curves
   - `get_samplewise_breakthrough_and_skew()` (lines 400-500): Emergence metrics
@@ -43,31 +43,7 @@ Code to investigate emergent scaling behaviour at test-time with language reason
 
 ### Experimental Configurations
 - `config/`: YAML configuration files for different experimental setups
-- `batch_jobs/`: SLURM scripts for cluster execution
-
-## Key Features
-
-### Emergence Metrics
-The framework computes novel metrics to quantify reasoning emergence:
-- **Breakthroughness**: Measures sudden improvements in reasoning quality
-- **Skewness**: Captures asymmetric patterns in reasoning development
-- **Probability tracking**: Models confidence evolution across token budgets
-
-### Multi-Model Support
-- DeepSeek-R1-Distill family
-- Qwen2.5 series  
-- QwQ reasoning models
-- Phi-4 reasoning models
-
-### Inference Engines
-- HuggingFace Transformers
-- vLLM for efficient batch processing
-- Automatic memory management and OOM recovery
-
-### Dataset Integration
-- GPQA (science reasoning)
-- AIME mathematics competitions
-- GSM8K mathematical word problems
+- `batch_jobs/`: SLURM/GridEngine scripts for cluster execution
 
 ## Usage
 
@@ -104,7 +80,7 @@ top_samples = workflow.get_top_k_max_emergence_samples(k=4, plot=True)
 
 ## Computational Requirements
 
-- **GPU Memory**: 24GB+ recommended for 7B models, 48GB+ for 32B models
+- **GPU Memory**: 12GB recommended for 7B models, 48GB for 32B models
 - **Inference**: Supports both single-GPU and multi-GPU setups
 - **Cluster**: Includes SLURM/GridEngine scripts for execution
 
