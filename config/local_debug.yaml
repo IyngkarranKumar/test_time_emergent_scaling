@@ -1,0 +1,32 @@
+#data 
+dataset_name: openai/gsm8k
+
+#workflow scale parameters
+num_samples: 4
+batch_size: 4
+num_completions: 1
+solution_set_batch_size: 20
+vllm_gpu_memory_utilization: 0.7
+max_model_len: None #sets to last token budget size
+
+#model
+model_name: EleutherAI/pythia-70m
+tokenizer_name: microsoft/Phi-4-reasoning
+quantization: 8 #defaults to fp16
+
+#workflow 
+start_token_budget: 6 #log2
+end_token_budget: 6 #log2
+
+#SAVE
+SAVE_BOOL: False
+
+#inference
+inference_engine: "hf"
+max_new_tokens_frac: 0.25
+
+#scoring 
+normalise_over_solution_set: False
+
+#debug
+DEBUG_MODE: True

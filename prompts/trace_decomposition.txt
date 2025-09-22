@@ -1,0 +1,104 @@
+SYSTEM_PROMPT=You are an expert instruction follower
+
+
+
+USER_PROMPT=
+You are going to be given an output from a language model. The output consists of the model reasoning towards a solution to a mathematical/science problem. Call this output the model's reasoning trace. 
+
+
+Your task is to decompose the reasoning trace according to the following taxonomy:
+- Problem Definition: The stage in the reasoning trace where the model reformulates the problem. It typically ends with a
+sentence with an explicit recognition of the required solution, e.g., “I need to find ...”
+
+- Blooming Cycle: The stage in the reasoning trace that is the first major reasoning cycle, where the model decomposes the problem into subproblems and provides an interim answer. It may qualify its confidencein the answer, which will often start with phrases like “Hm, let me verify that...
+
+- Reconstruction Cycle: These are subsequent reasoning cycles where the model reconsiders what
+happened in the blooming cycle, e.g., “Wait”, “Alternatively”, “Is there another way to
+interpret this?”. It may then provide a new interim answer in which it may or may notqualify its confidence. This step may repeat multiple times. 
+
+- Final Decision: This is the stage where the model reaches it's final answer, and gives it's final answer. 
+
+You should put tags around each of these units of the reasoning trace. Specifically: 
+- Enclose the Problem Definition stage within: <definition> </definition> tags.
+- Enclose the Bloom cycle stage(s) within: <bloom></bloom> tags. 
+- Enclose the reconstruction cycle(s) within: <reconstruction></reconstruction> tags 
+- Enclose the final answer stage within <final></final> tags. 
+
+Of course, each one of these units of reasoning can occur multiple times within a single reasoning trace. 
+
+
+Here is an example reasoning trace and the decomposition:
+
+input: Prompt: A robe takes 2 bolts of blue fiber and half that much white fiber. How
+many bolts in total does it take? Please reason step by step, and put your final
+answer within .<think> Okay, so I’ve got this math problem here: "A robe takes 2 bolts
+of blue fiber and half that much white fiber. How many bolts in total does
+it take?" Hmm, let me try to figure this out step by step. I’m not super
+confident with these kinds of problems, but I’ll take it slowly.
+First, let me parse the problem. It says a robe requires 2 bolts of blue
+fiber and half that much white fiber. So, blue fiber is one part, and white
+fiber is another part. I need to find the total number of bolts needed for
+both.
+Alright, so let me break it down. The problem mentions two types of fibers:
+blue and white. It gives me the quantity for blue fiber first: 2 bolts.
+Then, for white fiber, it says half that much. Hmm, half that much of what?
+I think it means half of the blue fiber’s amount.
+So, if blue fiber is 2 bolts, then half of that would be 2 divided by 2,
+which is 1. So, white fiber is 1 bolt. Therefore, the total number of bolts
+would be blue plus white, which is 2 plus 1. That gives me 3 bolts in total.
+Wait, let me make sure I’m not making a mistake here. The problem says "half
+that much white fiber." So, "that much" refers to the blue fiber, right? So,
+if blue is 2, then half of blue is 1. So, white is 1. So, 2 + 1 is indeed
+3. That seems straightforward.
+But, hold on, let me think again. Is there another way to interpret this?
+Maybe "half that much" could mean half of something else? Let me reread
+the problem: "A robe takes 2 bolts of blue fiber and half that much white
+fiber." Hmm, it doesn’t specify the total number of fibers or anything else.
+So, it’s just blue is 2, white is half of that, so 1. Total is 3.
+Alternatively, could it be that "half that much" is referring to something
+else, like half of the total? But the sentence structure doesn’t support
+that. It says "half that much white fiber," with "that much" referring back
+to the blue fiber. So, yeah, 2 is the amount of blue, white is half of that,
+so 1. Total is 3.
+I think I’m confident now. So, 2 bolts of blue and 1 bolt of white make 3
+bolts in total. So, the answer should be 3.
+**Final Answer** The total number of bolts needed is 3. </think>
+
+output: Prompt: A robe takes 2 bolts of blue fiber and half that much white fiber. How
+many bolts in total does it take? Please reason step by step, and put your final
+answer within .<think> <definition>Okay, so I’ve got this math problem here: "A robe takes 2 bolts
+of blue fiber and half that much white fiber. How many bolts in total does
+it take?" Hmm, let me try to figure this out step by step. I’m not super
+confident with these kinds of problems, but I’ll take it slowly.
+First, let me parse the problem. It says a robe requires 2 bolts of blue
+fiber and half that much white fiber. So, blue fiber is one part, and white
+fiber is another part. I need to find the total number of bolts needed for
+both. </definition>
+<bloom>Alright, so let me break it down. The problem mentions two types of fibers:
+blue and white. It gives me the quantity for blue fiber first: 2 bolts.
+Then, for white fiber, it says half that much. Hmm, half that much of what?
+I think it means half of the blue fiber’s amount.
+So, if blue fiber is 2 bolts, then half of that would be 2 divided by 2,
+which is 1. So, white fiber is 1 bolt. Therefore, the total number of bolts
+would be blue plus white, which is 2 plus 1. That gives me 3 bolts in total.</bloom>
+<reconstruction>Wait, let me make sure I’m not making a mistake here. The problem says "half
+that much white fiber." So, "that much" refers to the blue fiber, right? So,
+if blue is 2, then half of blue is 1. So, white is 1. So, 2 + 1 is indeed
+3. That seems straightforward.
+But, hold on, let me think again. Is there another way to interpret this?
+Maybe "half that much" could mean half of something else? Let me reread
+the problem: "A robe takes 2 bolts of blue fiber and half that much white
+fiber." Hmm, it doesn’t specify the total number of fibers or anything else.
+So, it’s just blue is 2, white is half of that, so 1. Total is 3.
+Alternatively, could it be that "half that much" is referring to something
+else, like half of the total? But the sentence structure doesn’t support
+that. It says "half that much white fiber," with "that much" referring back
+to the blue fiber. So, yeah, 2 is the amount of blue, white is half of that,
+so 1. Total is 3.</reconstruction>
+<final>I think I’m confident now. So, 2 bolts of blue and 1 bolt of white make 3
+bolts in total. So, the answer should be 3.
+**Final Answer** The total number of bolts needed is 3.<final> </think>
+
+HERE IS THE REASONING TRACE TO ANALYSE: {INSERT_REASONING_TRACE}
+FOR CONTEXT, HERE IS THE INPUT PROMPT: {INSERT_INPUT_PROMPT}
+

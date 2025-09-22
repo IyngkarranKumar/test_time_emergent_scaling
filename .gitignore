@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.pytest_cache/
+
+#cluster 
+scripts/_terminal.sh
+
+# Virtual environments
+ml_env.tar.gz
+venv/
+env/
+ENV/
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+*.ipynb_checkpoints
+scratch.ipynb
+
+# Data and outputs
+data/
+data_old/
+remote_data/
+results_data/
+hf_cache/
+analysis_outputs/
+trace_analysis_outputs/
+temp_outputs/
+figures/
+
+# Logs
+logs/
+slurm_logs/
+gridengine_logs/
+transfer_logs/
+output.log
+*.log
+
+# Documentation/LaTeX
+latex/
+*.html
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# Configuration and secrets
+env/*
+!env/.env.template
+!env/.env.example
+localisation_config/
+scripts/setup_git.sh
+
+# Temporary/scratch files
+scratch.md
+scratch.py
+scratch.ipynb
+misc/
+old_code/
+
+# Analysis scripts (if they contain sensitive info)
+analysis_scripts/
+
+#python envs 
+python_env/eddie/
+python_env/cluster/
+python_env/vastai/
+python_env/get_versions_info.sh
