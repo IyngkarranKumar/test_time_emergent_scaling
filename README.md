@@ -1,6 +1,6 @@
 # Test-time emergent scaling
 
-Project repository for investigating emergent test-time scaling in language reasoning models
+Project repository for investigating emergent test-time scaling in language reasoning models. This is an active project and not yet ready for external usage. 
 
 
 ## Overview
@@ -84,7 +84,5 @@ top_samples = workflow.get_top_k_max_emergence_samples(k=4, plot=True)
 - **Inference**: Supports both single-GPU and multi-GPU setups
 - **Cluster**: Includes SLURM/GridEngine scripts for execution
 
-## Status
 
-This is an active project and not yet ready for external usage. 
 
