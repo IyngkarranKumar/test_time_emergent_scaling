@@ -89,7 +89,8 @@ def main():
     elif os.environ.get("node_type")=="EIDF":
         dot_env_path="env_vars/.env.EIDF"
     else:
-        raise ValueError(f"Unknown node type: {os.environ.get('node_type')}")
+        dot_env_path="env_vars/.env.main"
+    print(f"\n Loading environment variables from {dot_env_path} \n ")
     load_dotenv(dot_env_path)
 
 
@@ -228,10 +229,11 @@ def main():
     #those god damn warnings 
     warnings.filterwarnings('ignore', category=UserWarning, module='google.protobuf.runtime_version')
 
-    logger.info("CONFIG DETAILS:")
-    logger.info(f"\n{config}\n") #using repr(?) method
-    if torch.cuda.is_available():
-        logger.info(f"Number of GPUs: {num_gpus}")
+    if config.DEBUG_MODE:
+        logger.info("CONFIG DETAILS:")
+        logger.info(f"\n{config}\n") #using repr(?) method
+        if torch.cuda.is_available():
+            logger.info(f"Number of GPUs: {num_gpus}")
 
 
 

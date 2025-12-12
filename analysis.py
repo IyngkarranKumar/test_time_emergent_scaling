@@ -129,8 +129,6 @@ if 1:
         top_k_indices = [2,3,15,0]
         scaling_curve_data = analysis_workflow.plot_top_k_across_scales(top_k_indices=top_k_indices,SHOW=SHOW,SAVE=SAVE,save_dir=save_dir)
 
-        breakpoint()
-
 
 if 0: 
     #appendix

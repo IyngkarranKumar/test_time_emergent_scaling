@@ -10,7 +10,7 @@ class Config:
     def __init__(self,parse_args=True):
 
         """
-        Priority order: base config < yaml config < CLI overrides
+        Priority order: CLI overrides > yaml config > base config
 
         """
         
@@ -19,6 +19,7 @@ class Config:
         
         # parse arguments, including config file
         if parse_args and len(sys.argv) > 1:
+
             self._parse_arguments()
 
             #load yaml config
@@ -145,7 +146,7 @@ class Config:
         self.SAVE_BOOL = False
         self.start_token_budget, self.end_token_budget = 8, 11
         self.DEBUG_MODE = False
-        self.inference_engine = "hf" 
+        self.inference_engine = "vllm" 
         if self.inference_engine == "vllm": 
             assert torch.cuda.is_available(), "VLLM requires CUDA"
         self.vllm_gpu_memory_utilization = 0.4
@@ -188,7 +189,7 @@ class Config:
         self.INSERT_SYSTEM_PROMPT_FOR_GPQA_MCQ_FORMAT = False
 
         # scoring config 
-        self.normalise_over_solution_set = False
+        self.normalise_over_solution_set = True
         self.LOCALISATION_RUN = False
 
     
@@ -231,8 +232,7 @@ class Config:
             print(f"Error parsing YAML: {e}")
 
 
-            
-
+        
     def _set_derived_attributes(self):
 
         # end reasonning trace properly 
