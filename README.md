@@ -1,11 +1,11 @@
-# Emergent scaling in language models at test-time
+# Emergent abilities in language models at test-time
 
 Project repository for investigating emergent test-time scaling in language reasoning models. 
 
 
 ## Overview
 
-Code to investigate emergent scaling behaviour at test-time with language reasoning models (LRM). We aim to establish if there are sharp, non-linear increases in LRM performance as test-time compute budget is scaled, in an anologous study to the train-time scaling case ([Wei et al. 2022](https://arxiv.org/pdf/2206.07682)). Discrete metrics (accuracy) and continuous metrics are tracked to see if abrupt scaling of discrete metrics can be explained by smoother scaling of the continous metrics. 
+Code to investigate emergent scaling behaviour at test-time with language reasoning models (LRM). We investigate if there are sharp, non-linear increases in LRM performance as test-time compute budget is scaled, in an analogous study to the train-time scaling case ([Wei et al. 2022](https://arxiv.org/pdf/2206.07682)). Discrete metrics (accuracy) and continuous metrics are tracked to see if abrupt scaling of discrete metrics can be explained by smoother scaling of the continous metrics. 
 
 #### Research Questions
 
@@ -25,11 +25,11 @@ Set the relevant environment variables within ``env_vars/.env.main`` (``HF_TOKEN
 
 ### Python environment 🐍
  
-Run the command ``bash python_env/setup_python_environment.sh`` to set up the environment. This project uses the vLLM library, which requires specific package dependencies and can be fragile at times. If you run into dependency conflicts, try reinstalling the vLLM package, and use the script ``python_env/check_installation.sh`` to check that things are working (you should see: "✅ vLLM engine loaded successfully").
+Run the command ``bash python_env/setup_python_environment.sh`` to set up the environment. This project uses the vLLM library, which requires specific package dependencies and can be fragile. If you run into dependency conflicts, try reinstalling the vLLM package, and use the script ``python_env/check_installation.sh`` to check that things are working (you should see: "✅ vLLM engine loaded successfully").
 
 ### Generation 
 
-Via command line:
+Text generation and scoring can be done via command line:
 
 ```bash
 python3 main.py \
@@ -41,7 +41,7 @@ python3 main.py \
     --SAVE_BOOL \
 ```
 
-Or, via config .yaml files
+Or via config .yaml files if working in an IDE (recommended): 
 
 ```
 python3 main.py --config_file config/example.yaml
@@ -49,7 +49,7 @@ python3 main.py --config_file config/example.yaml
 
 ### Analysis
 
-The `AnalysisWorkflow` class provides high-level analysis tools:
+The `AnalysisWorkflow` class provides high-level analysis tools for the generated responses:
 
 ```python
 # Load and analyze results
@@ -67,7 +67,7 @@ top_samples = workflow.get_top_k_max_emergence_samples(k=4, plot=True)
 
 ### Config parameters
 
-These are the main parameters you'll typically modify for each experiment:
+The main parameters to modify for each experiment are:
 
 | Parameter | Type | Description | Example |
 |-----------|------|-------------|---------|
@@ -76,7 +76,7 @@ These are the main parameters you'll typically modify for each experiment:
 | `start_token_budget` | int | Starting token budget (log2 scale) | `7` (= 128 tokens) |
 | `end_token_budget` | int | Ending token budget (log2 scale) | `11` (= 2048 tokens) |
 | `batch_size` | int | Number of samples processed per batch | `4` |
-| `SAVE_BOOL` | bool | Enable/disable saving results | `True` |
+| `SAVE_BOOL` | bool | Enable/disable saving results (in directory: ``results_data``) | `True` |
 
 #### Supported Datasets:  
 - `math-ai/aime25`
@@ -85,7 +85,7 @@ These are the main parameters you'll typically modify for each experiment:
 - `ProCreations/SimpleMath` (debug)
 - `openai/gsm8k` (debug)
 
-See below for additional parameters. 
+Additional config parameters are given at the very end of this page. 
 
 ## Directory structure
 
