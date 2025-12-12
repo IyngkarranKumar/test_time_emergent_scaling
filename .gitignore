@@ -37,7 +37,6 @@ analysis_scripts/
 
 # Configuration
 localisation_config/
-env_vars/*
 !env_vars/.env.template
 env_vars/.env.local
 env_vars/.env.mlp_compute

@@ -10,7 +10,7 @@ eval "$($HOME/miniconda3/bin/mamba shell hook --shell bash)"
 
 # Create environment from yml file
 # use mamba for quicker dependency solving
-mamba env create -f python_env_vars/environment_uv.yml
+mamba env create -f python_env/environment_uv.yml
 
 eval "$($HOME/miniconda3/bin/mamba shell hook --shell bash)"
 
@@ -19,7 +19,7 @@ mamba activate ml_env
 
 #requirements 
 echo "Installing requirements with uv"
-uv pip install --python $(which python) -r python_env_vars/vastai/requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118
+uv pip install --python $(which python) -r python_env/requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118
 
 
 #torch environment 
@@ -34,5 +34,5 @@ uv pip install --python $(which python) --upgrade vllm==0.10.1.1 #this vllm seem
 
 
 #echo "Checking installation"
-bash python_env_vars/vastai/check_installation.sh
+bash python_env/check_installation.sh
 
