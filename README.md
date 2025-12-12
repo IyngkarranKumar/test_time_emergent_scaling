@@ -2,32 +2,38 @@
 
 Project repository for investigating emergent test-time scaling in language reasoning models. 
 
-
 ## Overview
 
-Code to investigate emergent scaling behaviour at test-time with language reasoning models (LRM). We investigate if there are sharp, non-linear increases in LRM performance as test-time compute budget is scaled, in an analogous study to the train-time scaling case ([Wei et al. 2022](https://arxiv.org/pdf/2206.07682)). Discrete metrics (accuracy) and continuous metrics are tracked to see if abrupt scaling of discrete metrics can be explained by smoother scaling of the continous metrics. 
+We investigate if there are sharp, non-linear increases in LRM performance as test-time compute budget is scaled, in an analogous study to the train-time scaling case ([Wei et al. 2022](https://arxiv.org/pdf/2206.07682)). Discrete metrics (accuracy) and continuous metrics are tracked to see if abrupt scaling of discrete metrics can be explained by smoother scaling of the continous metrics. 
 
 #### Research Questions
 
-- Do test-time compute scaling laws exhibit sharp, non-linear (emergent) scaling behaviour, similar to what has been observed when scaling train-time compute([Wei et al. 2022](https://arxiv.org/pdf/2206.07682)) ?
-- Is observed emergent scaling behaviour contingent on the scoring metric ([Schaeffer et al. 2023](https://arxiv.org/abs/2304.15004)) or present across discrete **and** continuous metrics?
-- What influence do the following properties have on the tendency to observe emergent test-time scaling behaviour?
-  - Task distribution
-  - Reasoning trajectory
-  - Language reasoning model (LRM) used for evaluation
-  - Number of LRM model parameters
+1.  To what extent does emergent scaling vary across different datasets? Are the returns to test-time compute best modelled by a log-linear relationship, or are there cases where other fits (such as piecewise linear) are more appropriate?
+2.  To what extent do individual dataset instances consistently exhibit emergent test-time scaling? Across multiple models, do the same instances consistently exhibit sharp, abrupt increases in performance?
+3.  To what extent does emergent scaling vary across different model families? Do some reasoning models display sharper scaling behaviour than others, or is this behaviour consistent across model families?
+4.  To what extent does emergent scaling vary across model size (number of parameters)? Do larger models exhibit sharper scaling than smaller ones, or does model size have a negligible influence on emergent test-time scaling?
+5.  Is the presence of emergent test-time scaling contingent on the metric used
+for evaluation? Does emergent scaling only occur when using discrete evaluation metrics, or is it present when tracking continuous evaluation metrics too?
 
-## Usage
+## Using this repository
+
+Begin with: 
+
+```bash 
+git clone https://github.com/IyngkarranKumar/test_time_emergent_scaling.git
+```
 
 ### Environment setup
 
 Set the relevant environment variables within ``env_vars/.env.main`` (``HF_TOKEN``, CUDA variables, etc.)
 
 ### Python environment 🐍
- 
+
+This project uses [mamba](https://mamba.readthedocs.io/en/latest/) for python package management - make sure it is installed on your system. 
+
 Run the command ``bash python_env/setup_python_environment.sh`` to set up the environment. This project uses the vLLM library, which requires specific package dependencies and can be fragile. If you run into dependency conflicts, try reinstalling the vLLM package, and use the script ``python_env/check_installation.sh`` to check that things are working (you should see: "✅ vLLM engine loaded successfully").
 
-### Generation 
+### Generating scaling curves
 
 Text generation and scoring can be done via command line:
 
@@ -41,7 +47,7 @@ python3 main.py \
     --SAVE_BOOL \
 ```
 
-Or via config .yaml files if working in an IDE (recommended): 
+Or via yaml config files if working in an IDE (recommended): 
 
 ```
 python3 main.py --config_file config/example.yaml
