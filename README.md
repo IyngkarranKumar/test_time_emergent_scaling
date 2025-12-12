@@ -113,10 +113,10 @@ Additional config parameters are given at the very end of this page.
 - `config/`: YAML configuration files for different experimental setups
 - `batch_jobs/`: SLURM/GridEngine scripts for cluster execution
 
-## GPU requirements and Runtime
+## GPU requirements
 
 - **GPUs**: By default, two GPUs are required - one for the vLLM engine (which does most of the text generation) and one for the HuggingFace model (which is needed to calculate probabilities of each candidate solution). The workflow should work for a single GPU setup, but is better optimized for two GPUs. 
-- **Runtime**: 
+
 
 
 <hr>
