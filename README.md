@@ -121,7 +121,7 @@ Additional config parameters are given at the very end of this page.
 
 <hr>
 <hr>
-<br><br>
+<br>
 
 
 ## Additional configuration parameters
