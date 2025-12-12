@@ -1,0 +1,79 @@
+
+# Python
+__pycache__/
+.pytest_cache/
+
+# IDE
+.vscode/
+
+# Cache and temporary
+hf_cache/
+tmp_dir/
+temp_outputs/
+
+# Data directories
+data/
+data_old/
+remote_data/
+text_data/
+results_data/
+main_results_data/
+
+# Logs
+logs/
+slurm_logs/
+gridengine_logs/
+transfer_logs/
+logs_to_analyse/
+src_ops_logs/
+log.txt
+output.log
+
+# Output directories
+analysis_outputs/
+trace_analysis_outputs/
+figures/
+analysis_scripts/
+
+# Configuration
+localisation_config/
+env_vars/*
+!env_vars/.env.template
+env_vars/.env.local
+env_vars/.env.mlp_compute
+env_vars/.env.mlp_head
+env_vars/.env.eddie_head
+env_vars/.env.eddie_compute
+
+# LaTeX
+latex/
+
+# Old/misc code
+old_code/
+misc/
+mlp_l40_debug.py
+to_remove/
+gitleaks.toml
+
+# Run scripts
+run_scripts/*
+
+# Docker
+docker-compose.yml
+Dockerfile
+main_pod.yaml
+test_pod.yaml
+
+# Archives
+ml_env.tar.gz
+EIDF_source_checksums.txt
+vast_source_checksums.txt
+
+# Generated files
+*.html
+*.png
+*.csv
+
+# Scratch files
+scratch.md
+scratch.ipynb

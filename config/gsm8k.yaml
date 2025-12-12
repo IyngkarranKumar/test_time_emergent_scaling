@@ -1,0 +1,32 @@
+#use this as scoring debug - gsm8k is easy even for small-ish models
+
+
+#data 
+dataset_name: "openai/gsm8k"
+num_samples: 4
+batch_size: 4
+num_completions: 2
+
+
+#model
+model_name: "Qwen/Qwen2.5-3B-Instruct"
+quantization: None #defaults to fp16
+
+#workflow 
+start_token_budget: 7 #log2
+end_token_budget: 10 #log2
+
+#SAVE
+SAVE_BOOL: False
+
+#inference
+inference_engine: "vllm"
+max_new_tokens_frac: 0.125
+vllm_gpu_memory_utilization: 0.9
+
+#scoring 
+normalise_over_solution_set: False
+solution_set_batch_size: 100
+
+#debug
+DEBUG_MODE: False

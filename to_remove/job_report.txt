@@ -1,0 +1,327 @@
+==== 50954043 ====
+Host:
+Host: node3b07.ecdf.ed.ac.uk
+
+Failed on:
+('SCORING', '256')
+
+Config:
+2025-09-22 00:44:41,993 - __main__ - INFO - Number of GPUs: 2
+2025-09-22 00:44:41,994 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: deepseek-ai/DeepSeek-R1-Distill-Qwen-32B
+  Dataset Name: math-ai/aime25
+  Batch Size: 5
+  Start Token Budget: 8
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Solution Set Batch Size: 20
+
+==============================
+
+==== 50961590 ====
+Host:
+Host: node3b03.ecdf.ed.ac.uk
+
+Failed on:
+('FORCE_END', '2048')
+
+Config:
+2025-09-23 00:14:48,965 - __main__ - INFO - Number of GPUs: 2
+2025-09-23 00:14:48,966 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: microsoft/Phi-4-reasoning
+  Dataset Name: math-ai/aime25
+  Batch Size: 5
+  Start Token Budget: 8
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Force End Batch Size: 5
+  Solution Set Batch Size: 20
+
+==============================
+
+==== 2087879 ====
+Host:
+Host: crannog01
+
+Failed on:
+('SCORING', '128')
+
+Config:
+2025-09-21 13:26:05,918 - __main__ - INFO - Number of GPUs: 4
+2025-09-21 13:26:05,919 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: Qwen/QwQ-32B
+  Dataset Name: Maxwell-Jia/AIME_2024
+  Batch Size: 5
+  Start Token Budget: 11
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Solution Set Batch Size: 20
+
+==============================
+
+==== 51071401 ====
+Host:
+Host: node3b03.ecdf.ed.ac.uk
+
+Failed on:
+('FORCE_END', '4096')
+
+Config:
+2025-10-01 23:08:41,464 - __main__ - INFO - Number of GPUs: 2
+2025-10-01 23:08:41,465 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: microsoft/Phi-4-reasoning-plus
+  Dataset Name: Idavidrein/gpqa
+  Batch Size: 5
+  Start Token Budget: 12
+  End Token Budget: 13
+  Final Answer Budget: 10
+  Force End Batch Size: 25
+  Solution Set Batch Size: 4
+
+==============================
+
+==== 2086381 ====
+Host:
+Host: crannog02
+
+Failed on:
+('SCORING', '256')
+
+Config:
+2025-09-15 01:25:12,604 - __main__ - INFO - Number of GPUs: 4
+2025-09-15 01:25:12,605 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: Qwen/QwQ-32B
+  Dataset Name: Maxwell-Jia/AIME_2024
+  Batch Size: 5
+  Start Token Budget: 7
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Solution Set Batch Size: 20
+
+==============================
+
+==== 51079847 ====
+Host:
+Host: node3b06.ecdf.ed.ac.uk
+
+Failed on:
+('FORCE_END', '4096')
+
+Config:
+2025-10-03 11:23:21,179 - __main__ - INFO - Number of GPUs: 2
+2025-10-03 11:23:21,180 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: microsoft/Phi-4-reasoning-plus
+  Dataset Name: Idavidrein/gpqa
+  Batch Size: 5
+  Start Token Budget: 12
+  End Token Budget: 13
+  Final Answer Budget: 10
+  Force End Batch Size: 25
+  Solution Set Batch Size: 4
+
+==============================
+
+==== 2086577 ====
+Host:
+Host: crannog02
+
+Failed on:
+('SCORING', '256')
+
+Config:
+2025-09-16 01:41:11,949 - __main__ - INFO - Number of GPUs: 4
+2025-09-16 01:41:11,950 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: Qwen/QwQ-32B
+  Dataset Name: Maxwell-Jia/AIME_2024
+  Batch Size: 5
+  Start Token Budget: 7
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Solution Set Batch Size: 20
+
+==============================
+
+==== 2087942 ====
+Host:
+Host: crannog01
+
+Failed on:
+('FORCE_END', '2048')
+
+Config:
+2025-09-22 01:05:36,852 - __main__ - INFO - Number of GPUs: 4
+2025-09-22 01:05:36,853 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: microsoft/Phi-4-reasoning-plus
+  Dataset Name: Maxwell-Jia/AIME_2024
+  Batch Size: 5
+  Start Token Budget: 7
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Solution Set Batch Size: 20
+
+==============================
+
+==== 2086217 ====
+Host:
+Host: crannog02
+
+Failed on:
+('SCORING', '256')
+
+Config:
+2025-09-14 12:57:44,328 - __main__ - INFO - Number of GPUs: 4
+2025-09-14 12:57:44,329 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: Qwen/QwQ-32B
+  Dataset Name: Maxwell-Jia/AIME_2024
+  Batch Size: 5
+  Start Token Budget: 7
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Solution Set Batch Size: 20
+
+==============================
+
+==== 2091171 ====
+Host:
+Host: crannog03
+
+Failed on:
+('FORCE_END', '4096')
+
+Config:
+2025-10-03 12:30:09,382 - __main__ - INFO - Number of GPUs: 4
+2025-10-03 12:30:09,383 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: deepseek-ai/DeepSeek-R1-Distill-Qwen-32B
+  Dataset Name: Idavidrein/gpqa
+  Batch Size: 5
+  Start Token Budget: 12
+  End Token Budget: 13
+  Final Answer Budget: 10
+  Force End Batch Size: 25
+  Solution Set Batch Size: 4
+
+==============================
+
+==== 50936733 ====
+Host:
+Host: node3b06.ecdf.ed.ac.uk
+
+Failed on:
+('FORCE_END', '2048')
+
+Config:
+2025-09-19 12:20:23,824 - __main__ - INFO - Number of GPUs: 2
+2025-09-19 12:20:23,825 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: Qwen/QwQ-32B
+  Dataset Name: Idavidrein/gpqa
+  Batch Size: 5
+  Start Token Budget: 7
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Solution Set Batch Size: 4
+
+==============================
+
+==== 51091497 ====
+Host:
+Host: node3b06.ecdf.ed.ac.uk
+
+Failed on:
+('FORCE_END', '4096')
+
+Config:
+2025-10-03 14:13:34,614 - __main__ - INFO - Number of GPUs: 2
+2025-10-03 14:13:34,615 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: Qwen/QwQ-32B
+  Dataset Name: Idavidrein/gpqa
+  Batch Size: 5
+  Start Token Budget: 12
+  End Token Budget: 13
+  Final Answer Budget: 10
+  Force End Batch Size: 25
+  Solution Set Batch Size: 4
+
+==============================
+
+==== 50984902 ====
+Host:
+Host: node3b07.ecdf.ed.ac.uk
+
+Failed on:
+('FORCE_END', '2048')
+
+Config:
+2025-09-24 10:51:58,193 - __main__ - INFO - Number of GPUs: 2
+2025-09-24 10:51:58,194 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: microsoft/Phi-4-reasoning-plus
+  Dataset Name: math-ai/aime25
+  Batch Size: 5
+  Start Token Budget: 11
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Force End Batch Size: 5
+  Solution Set Batch Size: 100
+
+==============================
+
+==== 50953277 ====
+Host:
+Host: node3b03.ecdf.ed.ac.uk
+
+Failed on:
+('FORCE_END', '2048')
+
+Config:
+2025-09-21 11:43:59,185 - __main__ - INFO - Number of GPUs: 2
+2025-09-21 11:43:59,186 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: microsoft/Phi-4-reasoning-plus
+  Dataset Name: Idavidrein/gpqa
+  Batch Size: 5
+  Start Token Budget: 11
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Solution Set Batch Size: 4
+
+==============================
+
+==== 2085278 ====
+Host:
+Host: crannog03
+
+Failed on:
+('SCORING', '256')
+
+Config:
+2025-09-10 02:15:36,372 - __main__ - INFO - Number of GPUs: 4
+2025-09-10 02:15:36,373 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: deepseek-ai/DeepSeek-R1-Distill-Qwen-32B
+  Dataset Name: Maxwell-Jia/AIME_2024
+  Batch Size: 5
+  Start Token Budget: 7
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Solution Set Batch Size: 20
+
+==============================
+
+==== 50982189 ====
+Host:
+Host: node3b03.ecdf.ed.ac.uk
+
+Failed on:
+('FORCE_END', '2048')
+
+Config:
+2025-09-23 23:08:13,740 - __main__ - INFO - Number of GPUs: 2
+2025-09-23 23:08:13,741 - __main__ - INFO - CONFIG DETAILS:
+  Model Name: microsoft/Phi-4-reasoning-plus
+  Dataset Name: math-ai/aime25
+  Batch Size: 5
+  Start Token Budget: 11
+  End Token Budget: 11
+  Final Answer Budget: 10
+  Force End Batch Size: 5
+  Solution Set Batch Size: 100
+
+==============================
+
