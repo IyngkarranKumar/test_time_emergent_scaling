@@ -33,7 +33,7 @@ This project uses [mamba](https://mamba.readthedocs.io/en/latest/) for python pa
 
 Run the command ``bash python_env/setup_python_environment.sh`` to set up the environment. This project uses the vLLM library, which requires specific package dependencies and can be fragile. If you run into dependency conflicts, try reinstalling the vLLM package, and use the script ``python_env/check_installation.sh`` to check that things are working (you should see: "✅ vLLM engine loaded successfully").
 
-### Generating scaling curves
+### Generating scaling data
 
 Text generation and scoring can be done via command line:
 
